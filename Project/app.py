@@ -23,7 +23,7 @@ def predict():
     rainfall = float(request.form['Rainfall'])
 
     # Add a dummy 8th feature to match the model's expected input
-    extra_feature = 0  # Replace with actual value if known
+    extra_feature = 0
     feature_list = [N, P, K, temp, humidity, ph, rainfall, extra_feature]
     
     single_pred = np.array(feature_list).reshape(1, -1)
@@ -44,6 +44,3 @@ def predict():
         result = "Sorry, we could not determine the best crop to be cultivated with the provided data."
 
     return render_template('index.html', prediction=result)
-
-if __name__ == "__main__":
-    app.run(debug=True)
